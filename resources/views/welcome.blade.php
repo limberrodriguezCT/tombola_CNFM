@@ -21,7 +21,6 @@
             <a href="{{ route('login') }}" class="text-2xl md:text-3xl font-black text-white uppercase tracking-wider block hover:text-pink-200 transition-colors">
                 XII CONGRESO NACIONAL DE DOCENTES
             </a>
-            <p class="text-white mt-2 font-semibold text-lg">Educación y Capacitación Técnica y Tecnológica</p>
             <p class="text-sm text-pink-100 mt-2">Conversatorio: "Del aula a la publicación: investigación aplicada y sistematización de experiencias pedagógicas"</p>
             <div class="mt-5">
                 <span class="text-xs text-white bg-[#0b4377] inline-block px-5 py-2 rounded-full font-bold shadow-inner">
