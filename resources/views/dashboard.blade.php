@@ -1,8 +1,11 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-8">
         
-        <div class="flex justify-end mb-6">
-            <a href="{{ route('tombola.index') }}" class="bg-[#e91e63] hover:bg-pink-700 text-white font-bold py-2.5 px-6 rounded-full shadow-[0_4px_15px_rgba(233,30,99,0.5)] transition-transform transform hover:scale-105 flex items-center space-x-2">
+        <div class="flex justify-between items-center mb-6">
+            <div class="text-white font-bold text-lg">
+                Total Registrados: <span class="text-[#00aeef]">{{ $participants->count() }}</span>
+            </div>
+            <a href="{{ route('tombola.index') }}" class="bg-[#e91e63] hover:bg-[#c2185b] text-white font-bold py-2.5 px-6 rounded-full shadow-[0_4px_15px_rgba(233,30,99,0.5)] transition-transform transform hover:scale-105 flex items-center space-x-2">
                 <span>🎰</span>
                 <span>Iniciar Tómbola</span>
             </a>
@@ -21,13 +24,21 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        @php
+                            $excluidos = session()->get('ganadores_excluidos', []);
+                        @endphp
                         @forelse($participants as $participant)
                         <tr class="hover:bg-gray-50 transition-colors">
-                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{{ $participant->nombre_completo }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">
+                                {{ $participant->nombre_completo }}
+                                @if(in_array($participant->id, $excluidos))
+                                    <span class="ml-2 px-2.5 py-0.5 text-[10px] font-bold bg-[#e91e63] text-white rounded-full uppercase">Ya salió</span>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $participant->centro_procedencia }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $participant->departamento }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-blue-100 text-[#0b4377]">
+                                <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-[#00aeef] text-white shadow-sm">
                                     {{ $participant->tipo_procedencia }}
                                 </span>
                             </td>
