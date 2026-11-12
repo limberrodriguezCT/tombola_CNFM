@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@olofpalme.com'],
             [
                 'name' => 'Administrador Olof Palme',
-                'password' => Hash::make('password123'), // Cambia esta contraseña en producción
+                'password' => Hash::make('password1234'), // Cambia esta contraseña en producción
             ]
         );
     }
